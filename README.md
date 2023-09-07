@@ -1,4 +1,4 @@
-# Code_Quiz
+# WorkScheduler
 
   * Author: Kyosook Shin
   * Author's Email: kyosook.shin@gmail.com

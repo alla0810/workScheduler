@@ -280,14 +280,23 @@ function restoreSavedUsrText()
 {
   console.log("usrInputTextArray = ", usrInputTextArray);  
 
-  for (var i=0; i<8; i++)
+  for (var i=0; i<9; i++)
   {
     usrInputTextArray[i] = "";
   }
 
   console.log("usrInputTextArray = ", usrInputTextArray);
 
-  usrInputTextArray = JSON.parse(localStorage.getItem("usrInputText"));
+  if (localStorage.getItem("usrInputText") === null)
+  {
+    console.log("local storage null");
+    ;   // do nothing, avoid nullify    
+  }
+  else
+  {
+    console.log("local storage NOT null");    
+    usrInputTextArray = JSON.parse(localStorage.getItem("usrInputText"));
+  }
 
   console.log("usrInputTextArray = ", usrInputTextArray);
   console.log("localStorage.getItem", localStorage.getItem("usrInputText"));

@@ -278,6 +278,12 @@ $("body").ready(function() {
 
 function restoreSavedUsrText()
 {
+  for (var i=0; i<0; i++)
+  {
+    usrInputTextArray[i] = "";
+  }
+
+
   usrInputTextArray = JSON.parse(localStorage.getItem("usrInputText"));
 
   console.log("usrInputTextArray = ", usrInputTextArray);

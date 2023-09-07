@@ -13,8 +13,6 @@
 ## Source Code References
   This project has used some reference codes from the following sites
 
-   * https://codingartistweb.com/2022/06/quiz-app-with-javascript/
-
    * https://git.bootcampcontent.com/University-of-Texas-at-Austin/UTA-VIRT-FSF-PT-07-2023-U-LOLC.git   
 
    

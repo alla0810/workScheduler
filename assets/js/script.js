@@ -1,23 +1,297 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+
+/* 
+  0: Text for hour-9AM
+  1: Text for hour-10AM
+  2: Text for hour-11AM
+  3: Text for hour-12PM
+  4: Text for hour-1PM
+  5: Text for hour-2PM
+  6: Text for hour-3PM
+  7: Text for hour-4PM
+  8: Text for hour-5PM
+*/
+
+usrInputTextArray = [];    
+
+
+$("body").ready(function() {
+  var currentDate = dayjs();
+
+  console.log("currentDate = ", currentDate);
+
+  var weekday = currentDate.format('dddd');
+  var month = currentDate.format('MMMM');
+  var day = currentDate.format('D');
+
+  var display_text = weekday + ", " + month + " " + day + "th";
+
+  $('#currentDay').append(display_text);
+
+  var currentHour = currentDate.hour();
+
+  console.log("currentHour = ", currentHour);
+
+  if (currentHour >= 9 && currentHour < 10)     // present = 9AM, no past, future: from 10AM
+  {
+    console.log("currentHour >= 9 && currentHour < 10", currentHour);
+
+    $('#hour-9AM').addClass("row time-block present");
+    $('#hour-10AM').addClass("row time-block future");
+    $('#hour-11AM').addClass("row time-block future");
+    $('#hour-12PM').addClass("row time-block future");
+    $('#hour-1PM').addClass("row time-block future");
+    $('#hour-2PM').addClass("row time-block future");
+    $('#hour-3PM').addClass("row time-block future");                    
+    $('#hour-4PM').addClass("row time-block future");                        
+    $('#hour-5PM').addClass("row time-block future");      
+  }
+  else if (currentHour >= 10 && currentHour < 11)
+  {
+    console.log("currentHour >= 10 && currentHour < 11", currentHour);
+
+    $('#hour-9AM').addClass("row time-block past");
+    $('#hour-10AM').addClass("row time-block present");
+    $('#hour-11AM').addClass("row time-block future");
+    $('#hour-12PM').addClass("row time-block future");
+    $('#hour-1PM').addClass("row time-block future");
+    $('#hour-2PM').addClass("row time-block future");
+    $('#hour-3PM').addClass("row time-block future");                    
+    $('#hour-4PM').addClass("row time-block future");                        
+    $('#hour-5PM').addClass("row time-block future");       
+  }
+  else if (currentHour >= 11 && currentHour < 12)
+  {
+    console.log("currentHour >= 11 && currentHour < 12", currentHour);
+
+    $('#hour-9AM').addClass("row time-block past");
+    $('#hour-10AM').addClass("row time-block past");
+    $('#hour-11AM').addClass("row time-block present");
+    $('#hour-12PM').addClass("row time-block future");
+    $('#hour-1PM').addClass("row time-block future");
+    $('#hour-2PM').addClass("row time-block future");
+    $('#hour-3PM').addClass("row time-block future");                    
+    $('#hour-4PM').addClass("row time-block future");                        
+    $('#hour-5PM').addClass("row time-block future");    
+  }
+  else if (currentHour >= 12 && currentHour < 13)
+  {
+    console.log("currentHour >= 12 && currentHour < 13", currentHour);
+
+    $('#hour-9AM').addClass("row time-block past");
+    $('#hour-10AM').addClass("row time-block past");
+    $('#hour-11AM').addClass("row time-block past");
+    $('#hour-12PM').addClass("row time-block present");
+    $('#hour-1PM').addClass("row time-block future");
+    $('#hour-2PM').addClass("row time-block future");
+    $('#hour-3PM').addClass("row time-block future");                    
+    $('#hour-4PM').addClass("row time-block future");                        
+    $('#hour-5PM').addClass("row time-block future");   
+  }
+  else if (currentHour >= 13 && currentHour < 14)
+  {
+    console.log("currentHour >= 13 && currentHour < 14", currentHour);
+
+    $('#hour-9AM').addClass("row time-block past");
+    $('#hour-10AM').addClass("row time-block past");
+    $('#hour-11AM').addClass("row time-block past");
+    $('#hour-12PM').addClass("row time-block past");
+    $('#hour-1PM').addClass("row time-block present");
+    $('#hour-2PM').addClass("row time-block future");
+    $('#hour-3PM').addClass("row time-block future");                    
+    $('#hour-4PM').addClass("row time-block future");                        
+    $('#hour-5PM').addClass("row time-block future");     
+  }
+  else if (currentHour >= 14 && currentHour < 15)
+  {
+    console.log("currentHour >= 14 && currentHour < 15", currentHour);
+
+    $('#hour-9AM').addClass("row time-block past");
+    $('#hour-10AM').addClass("row time-block past");
+    $('#hour-11AM').addClass("row time-block past");
+    $('#hour-12PM').addClass("row time-block past");
+    $('#hour-1PM').addClass("row time-block past");
+    $('#hour-2PM').addClass("row time-block present");
+    $('#hour-3PM').addClass("row time-block future");                    
+    $('#hour-4PM').addClass("row time-block future");                        
+    $('#hour-5PM').addClass("row time-block future");      
+  }
+  else if (currentHour >=15 && currentHour < 16)
+  {
+    console.log("currentHour >=15 && currentHour < 16", currentHour);
+
+    $('#hour-9AM').addClass("row time-block past");
+    $('#hour-10AM').addClass("row time-block past");
+    $('#hour-11AM').addClass("row time-block past");
+    $('#hour-12PM').addClass("row time-block past");
+    $('#hour-1PM').addClass("row time-block past");
+    $('#hour-2PM').addClass("row time-block past");
+    $('#hour-3PM').addClass("row time-block present");                    
+    $('#hour-4PM').addClass("row time-block future");                        
+    $('#hour-5PM').addClass("row time-block future");    
+  }
+  else if (currentHour >= 16 && currentHour < 17)
+  {
+    console.log("currentHour >= 16 && currentHour < 17", currentHour);
+
+    $('#hour-9AM').addClass("row time-block past");
+    $('#hour-10AM').addClass("row time-block past");
+    $('#hour-11AM').addClass("row time-block past");
+    $('#hour-12PM').addClass("row time-block past");
+    $('#hour-1PM').addClass("row time-block past");
+    $('#hour-2PM').addClass("row time-block past");
+    $('#hour-3PM').addClass("row time-block past");                    
+    $('#hour-4PM').addClass("row time-block present");                        
+    $('#hour-5PM').addClass("row time-block future");       
+  }
+  else if (currentHour >= 17 && currentHour < 18)
+  {
+    console.log("currentHour >= 17 && currentHour < 18", currentHour);
+
+    $('#hour-9AM').addClass("row time-block past");
+    $('#hour-10AM').addClass("row time-block past");
+    $('#hour-11AM').addClass("row time-block past");
+    $('#hour-12PM').addClass("row time-block past");
+    $('#hour-1PM').addClass("row time-block past");
+    $('#hour-2PM').addClass("row time-block past");
+    $('#hour-3PM').addClass("row time-block past");                    
+    $('#hour-4PM').addClass("row time-block past");                        
+    $('#hour-5PM').addClass("row time-block present");                            
+  }
+  else if (currentHour < 9)   // all future
+  {
+    $('#hour-9AM').addClass("row time-block future");
+    $('#hour-10AM').addClass("row time-block future");
+    $('#hour-11AM').addClass("row time-block future");
+    $('#hour-12PM').addClass("row time-block future");
+    $('#hour-1PM').addClass("row time-block future");
+    $('#hour-2PM').addClass("row time-block future");
+    $('#hour-3PM').addClass("row time-block future");                    
+    $('#hour-4PM').addClass("row time-block future");                        
+    $('#hour-5PM').addClass("row time-block future");      
+
+  }
+  else if (currentHour >= 18)  // all past
+  {
+    $('#hour-9AM').addClass("row time-block past");
+    $('#hour-10AM').addClass("row time-block past");
+    $('#hour-11AM').addClass("row time-block past");
+    $('#hour-12PM').addClass("row time-block past");
+    $('#hour-1PM').addClass("row time-block past");
+    $('#hour-2PM').addClass("row time-block past");
+    $('#hour-3PM').addClass("row time-block past");                    
+    $('#hour-4PM').addClass("row time-block past");                        
+    $('#hour-5PM').addClass("row time-block past");                            
+
+  }
+
+  $("#hour-9AM").children("button").click(function() {
+    var inputText = $("#hour-9AM").children("textarea").val();
+  
+    console.log("inputText = ", inputText);
+
+    usrInputTextArray[0] = inputText;
+
+    localStorage.setItem("usrInputText", JSON.stringify(usrInputTextArray));
+  });
+
+  $("#hour-10AM").children("button").click(function() {
+    var inputText = $("#hour-10AM").children("textarea").val();
+  
+    console.log("inputText = ", inputText);
+
+    usrInputTextArray[1] = inputText;
+
+    localStorage.setItem("usrInputText", JSON.stringify(usrInputTextArray));
+  });
+
+  $("#hour-11AM").children("button").click(function() {
+    var inputText = $("#hour-11AM").children("textarea").val();
+  
+    console.log("inputText = ", inputText);
+
+    usrInputTextArray[2] = inputText;
+
+    localStorage.setItem("usrInputText", JSON.stringify(usrInputTextArray));
+  });
+
+  $("#hour-12PM").children("button").click(function() {
+    var inputText = $("#hour-12PM").children("textarea").val();
+  
+    console.log("inputText = ", inputText);
+
+    usrInputTextArray[3] = inputText;
+
+    localStorage.setItem("usrInputText", JSON.stringify(usrInputTextArray));
+  });
+
+  $("#hour-1PM").children("button").click(function() {
+    var inputText = $("#hour-1PM").children("textarea").val();
+  
+    console.log("inputText = ", inputText);
+
+    usrInputTextArray[4] = inputText;
+
+    localStorage.setItem("usrInputText", JSON.stringify(usrInputTextArray));
+  });
+
+  $("#hour-2PM").children("button").click(function() {
+    var inputText = $("#hour-2PM").children("textarea").val();
+  
+    console.log("inputText = ", inputText);
+
+    usrInputTextArray[5] = inputText;
+
+    localStorage.setItem("usrInputText", JSON.stringify(usrInputTextArray));
+  });
+
+  $("#hour-3PM").children("button").click(function() {
+    var inputText = $("#hour-3PM").children("textarea").val();
+  
+    console.log("inputText = ", inputText);
+
+    usrInputTextArray[6] = inputText;
+
+    localStorage.setItem("usrInputText", JSON.stringify(usrInputTextArray));
+  });
+
+  $("#hour-4PM").children("button").click(function() {
+    var inputText = $("#hour-4PM").children("textarea").val();
+  
+    console.log("inputText = ", inputText);
+
+    usrInputTextArray[7] = inputText;
+
+    localStorage.setItem("usrInputText", JSON.stringify(usrInputTextArray));
+  });
+
+  $("#hour-5PM").children("button").click(function() {
+    var inputText = $("#hour-5PM").children("textarea").val();
+  
+    console.log("inputText = ", inputText);
+
+    usrInputTextArray[8] = inputText;
+
+    localStorage.setItem("usrInputText", JSON.stringify(usrInputTextArray));
+  });
+  
 });
+
+function restoreSavedUsrText()
+{
+  usrInputTextArray = JSON.parse(localStorage.getItem("usrInputText"));
+
+  console.log("usrInputTextArray = ", usrInputTextArray);
+
+  $("#hour-9AM").children("textarea").val(usrInputTextArray[0]);
+  $("#hour-10AM").children("textarea").val(usrInputTextArray[1]);
+  $("#hour-11AM").children("textarea").val(usrInputTextArray[2]);
+  $("#hour-12PM").children("textarea").val(usrInputTextArray[3]);
+  $("#hour-1PM").children("textarea").val(usrInputTextArray[4]);
+  $("#hour-2PM").children("textarea").val(usrInputTextArray[5]);
+  $("#hour-3PM").children("textarea").val(usrInputTextArray[6]);
+  $("#hour-4PM").children("textarea").val(usrInputTextArray[7]);
+  $("#hour-5PM").children("textarea").val(usrInputTextArray[8]);
+}
+
+
+restoreSavedUsrText();

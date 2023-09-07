@@ -34,7 +34,7 @@ GIVEN I am taking a daily planner to create a schedule
 
 * WHEN I am presented with time blocks for that day, THEN each time block is color-coded to indicate whether it is in the past, present, or future
 
-* WHEn I click into a time block, THEN I can enter an event
+* WHEN I click into a time block, THEN I can enter an event
   
 * WHEN I click the save button for that time block, THEN the text for that event is saved in local storage
 

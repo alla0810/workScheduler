@@ -282,40 +282,43 @@ function restoreSavedUsrText()
 
   console.log("usrInputTextArray = ", usrInputTextArray);
 
-  if (usrInputTextArray[0] != null)    {
-    $("#hour-9AM").children("textarea").val(usrInputTextArray[0]);
-  }
+  if (usrInputTextArray != null)
+  {
+    if (usrInputTextArray[0] != null)    {
+      $("#hour-9AM").children("textarea").val(usrInputTextArray[0]);
+    }
   
-  if (usrInputTextArray[1] != null)    {  
-    $("#hour-10AM").children("textarea").val(usrInputTextArray[1]);
-  }
+    if (usrInputTextArray[1] != null)    {  
+      $("#hour-10AM").children("textarea").val(usrInputTextArray[1]);
+    }
 
-  if (usrInputTextArray[2] != null)    {  
-    $("#hour-11AM").children("textarea").val(usrInputTextArray[2]);
-  }
+    if (usrInputTextArray[2] != null)    {  
+      $("#hour-11AM").children("textarea").val(usrInputTextArray[2]);
+    }
 
-  if (usrInputTextArray[3] != null)    {  
-    $("#hour-12PM").children("textarea").val(usrInputTextArray[3]);
-  }
+    if (usrInputTextArray[3] != null)    {  
+      $("#hour-12PM").children("textarea").val(usrInputTextArray[3]);
+    }
 
-  if (usrInputTextArray[4] != null)    {  
-    $("#hour-1PM").children("textarea").val(usrInputTextArray[4]);
-  }
+    if (usrInputTextArray[4] != null)    {  
+      $("#hour-1PM").children("textarea").val(usrInputTextArray[4]);
+    }
 
-  if (usrInputTextArray[5] != null)    {  
-    $("#hour-2PM").children("textarea").val(usrInputTextArray[5]);
-  }
+    if (usrInputTextArray[5] != null)    {  
+      $("#hour-2PM").children("textarea").val(usrInputTextArray[5]);
+    }
 
-  if (usrInputTextArray[6] != null)    {  
-    $("#hour-3PM").children("textarea").val(usrInputTextArray[6]);
-  }
+    if (usrInputTextArray[6] != null)    {  
+      $("#hour-3PM").children("textarea").val(usrInputTextArray[6]);
+    }
 
-  if (usrInputTextArray[7] != null)    {  
-    $("#hour-4PM").children("textarea").val(usrInputTextArray[7]);
-  }
+    if (usrInputTextArray[7] != null)    {  
+      $("#hour-4PM").children("textarea").val(usrInputTextArray[7]);
+    }
 
-  if (usrInputTextArray[8] != null)    {  
-    $("#hour-5PM").children("textarea").val(usrInputTextArray[8]);
+    if (usrInputTextArray[8] != null)    {  
+      $("#hour-5PM").children("textarea").val(usrInputTextArray[8]);
+    }
   }
 }
 

@@ -278,7 +278,7 @@ $("body").ready(function() {
 
 function restoreSavedUsrText()
 {
-  for (var i=0; i<0; i++)
+  for (var i=0; i<8; i++)
   {
     usrInputTextArray[i] = "";
   }

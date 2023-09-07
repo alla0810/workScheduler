@@ -278,15 +278,19 @@ $("body").ready(function() {
 
 function restoreSavedUsrText()
 {
+  console.log("usrInputTextArray = ", usrInputTextArray);  
+
   for (var i=0; i<8; i++)
   {
     usrInputTextArray[i] = "";
   }
 
+  console.log("usrInputTextArray = ", usrInputTextArray);
 
   usrInputTextArray = JSON.parse(localStorage.getItem("usrInputText"));
 
   console.log("usrInputTextArray = ", usrInputTextArray);
+  console.log("localStorage.getItem", localStorage.getItem("usrInputText"));
 
   if (usrInputTextArray != null)
   {

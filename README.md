@@ -6,9 +6,6 @@
   * GitHub: https://github.com/alla0810/workScheduler
   * screenshot
 ![screen1](./assets/images/screen1.png)
-![screen3](./assets/images/screen3.png)
-![screen4](./assets/images/screen4.png)
-![screen5](./assets/images/screen5.png)
 
 ## Source Code References
   This project has used some reference codes from the following sites

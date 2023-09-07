@@ -11,7 +11,7 @@
   8: Text for hour-5PM
 */
 
-usrInputTextArray = ["", "", "", "", "", "", "", "", ""];    
+usrInputTextArray = ["    ", "    ", "    ", "    ", "    ", "    ", "   ", "   ", "   "];    
 
 
 $("body").ready(function() {
